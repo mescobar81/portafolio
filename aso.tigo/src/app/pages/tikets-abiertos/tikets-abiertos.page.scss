@@ -1,0 +1,21 @@
+.container-buttons{
+    display: flex;
+    justify-content:center;
+}
+.cabecera{
+    background-color: #001F5F;
+    color: white;
+}
+.detalle-ticket{
+    border: 1px solid #28ba62;
+    margin-top: 10px;
+}
+
+.btn-seleccionar input{
+    display: none;
+}
+
+ion-thumbnail {
+    --size: 400px;
+    --border-radius: 14px;
+  }

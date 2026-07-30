@@ -1,0 +1,60 @@
+.toolbar{
+    height: 200px;
+}
+
+.toolbar__logo{
+    background-image: url("././../../../assets/imgs/ic_account_white_48dp.png");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #048beb;
+    margin-bottom: 5px;
+}
+
+.toolbar__nombre{
+    margin-left: 10px;
+}
+
+.toolbar__rol{
+    margin-top: -20px;
+    margin-left: 56px;
+}
+
+.col__logo{
+    width: 150px;
+    min-height: 35px;
+    margin: 0 auto;
+    background-image: url("././../../../assets/imgs/Logo Asotigo blanco.png");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 150px;
+}
+
+ion-icon {
+
+    &[class*="custom-"] {
+    
+    mask-size: contain;
+    
+    mask-position: 50% 50%;
+    
+    mask-repeat: no-repeat;
+    
+    background: currentColor;
+    
+    width: 1em;
+    
+    height: 1em;
+    
+    }
+    
+    &[class*="custom-gasoline"] {
+    
+    mask-image: url('../../../assets/imgs/gasoline.png');
+    
+    }
+    
+    }

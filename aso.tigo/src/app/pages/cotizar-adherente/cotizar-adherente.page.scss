@@ -1,0 +1,43 @@
+.contentgrid--cell {
+    border-color: #acacac; 
+    border-width: 0.1px; 
+    border-style:solid; margin-bottom : -1px;
+    background-color: #f5f5f5;
+}
+
+.btn {
+    display: flex;
+}
+
+.flex {
+    display         : flex;
+    background-color: #001F5F;
+    border-radius   : 6px;
+    width           : 120px;
+    justify-content : center;
+}
+
+.flex__cantidad {
+    width     : 30px;
+    height    : 30px;
+    margin-top: 15px;
+    color     : white;
+}
+
+.ion-text-right--color{
+    background-color: #2dd36f;
+    color: white;
+    font-weight:bold;
+}
+
+.ion-text-center--color{
+    background-color: #92949c;
+}
+
+.item-divider__importeTotal{
+    background-color: #2dd36f;
+    font-weight: 600;
+    color: white;
+    padding: 2px;
+    text-align: end;
+}

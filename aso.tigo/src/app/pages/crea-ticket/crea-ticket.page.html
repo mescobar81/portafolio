@@ -1,0 +1,65 @@
+<app-header title="crear tickets"></app-header>
+
+<ion-content class="ion-padding">
+  <form #fSolicitud="ngForm" (ngSubmit)="enviarSolicitud(fSolicitud)">
+    <ion-list>
+      <ion-item>
+        
+        <ion-select okText="Aceptar"
+                  label="Tipo Solicitud"
+                  labelPlacement="floating"
+                  name="tipoSolicitud"
+                  [ngModel]="nuevaSolicitud.tipoSolicitud"
+                  (ngModel)="$event">
+          <ion-select-option class="ion-text-wrap" *ngFor="let t of tiposSolicitud" [value]="t.id" required>{{t.descripcion}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <!-- <ion-item>
+      <ion-label>Tipo de solicitud</ion-label>
+      <ion-select class="text-wrap" interface="popover"
+                  name="tipoSolicitud"
+                  [ngModel]="nuevaSolicitud.tipoSolicitud"
+                  (ngModel)="$event">
+        <ion-select-option *ngFor="let t of tiposSolicitud" [value]="t.id" required>{{t.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+    
+    <ion-item>
+      <ion-input type="text"
+                 label="Asunto:"
+                 labelPlacement="floating"
+                 name="asunto"
+                 [(ngModel)]="nuevaSolicitud.asunto"
+                 required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea wrap="hard"
+                    autoGrow="true" 
+                    rows="15"
+                    name="comentario"
+                    [(ngModel)]="nuevaSolicitud.comentario"
+                    placeholder="Descripción:" 
+                    required></ion-textarea>
+    </ion-item>
+    <ion-button color="secondary"
+                expand="block"
+                (click)="tomarFoto()">
+      Adjuntar Archivo
+      <ion-icon slot="end" name="attach"></ion-icon>
+    </ion-button>
+    <ion-button [disabled]="fSolicitud.invalid" type="submit" expand="block">
+      Enviar Tickets
+      <ion-icon slot="end" name="chevron-forward"></ion-icon>
+    </ion-button>
+  </form>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3" *ngFor="let f of fotos">
+        <ion-card>
+          <img [src]="f | imageTrust">
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border" translucent>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás" defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">cambiar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<form #myForm="ngForm" (ngSubmit)="cambiarContrasenia(myForm)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-icon slot="start" name="people"></ion-icon>
+        <ion-input type="text"
+                   label="Nro. Documento:"
+                   labelPlacement="floating"
+                   name="documento"
+                   [(ngModel)]="cambioClave.documento"
+                   required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        
+        <ion-item>
+          <ion-icon slot="start" name="lock-closed"></ion-icon>
+        <ion-input name="claveActual"
+                   label="Clave actual:"
+                   labelPlacement="floating"
+                   [type]="showPassword?'text':'password'"
+                   [(ngModel)]="cambioClave.claveActual"
+                   required></ion-input>
+                   <ion-icon slot="end" (click)="toggleShow()" [name]="passwordToggleIcon"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-icon slot="start" name="lock-closed"></ion-icon>
+        <ion-input [type]="showPasswordNuevo? 'text':'password'"
+                   label="Clave nueva:"
+                   labelPlacement="floating"
+                   name="claveNueva"
+                   [(ngModel)]="cambioClave.claveNueva"
+                   required></ion-input>
+            <ion-icon slot="end" (click)="toggleShowNuevo()" [name]="passwordToggleIconNuevo"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-icon slot="start" name="lock-closed"></ion-icon>
+
+        <ion-input [type]="showPasswordConfirm? 'text':'password'"
+                   label="Repita su clave:"
+                   labelPlacement="floating"
+                   name="confirmacionClave"
+                   [(ngModel)]="cambioClave.confirmacionClave"
+                   required></ion-input>
+            <ion-icon slot="end" (click)="toggleShowConfirm()" [name]="passwordToggleIconConfirm"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button class="iongrid__button" type="submit" expand="block" shape="round">
+          CAMBIAR PASSWORD
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</form>
+</ion-content>

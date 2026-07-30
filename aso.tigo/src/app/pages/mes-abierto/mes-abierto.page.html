@@ -1,0 +1,41 @@
+<app-header title="extracto mes abierto"></app-header>
+<ion-content fullscreen>
+    <ion-grid class="container">
+        <ion-row>
+            <ion-col size="12"><div class="container__logo"></div></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="ion-text-center" size="12"><ion-text color="primary">
+                <ion-label>{{extratoMesAbierto?.cabecera.nombreApellido}}</ion-label>
+            </ion-text></ion-col>
+        </ion-row>
+
+        <div class="conatainer__cabecera">
+            <ion-row class="contentgrid--cell">
+                <ion-col size="6">
+                    <ion-text>
+                        Total Descuento:
+                    </ion-text>
+                </ion-col>
+                <ion-col size="6" class="ion-text-right">
+                    <ion-text>
+                        {{extratoMesAbierto?.cabecera.totalDescuento.toString()| formatoSeparadorMiles}}
+                    </ion-text>
+                </ion-col>
+            </ion-row>
+            <ion-row class="contentgrid--cell">
+                <ion-col size="6">
+                    <ion-text>
+                        Capital aportado:
+                    </ion-text>
+                </ion-col>
+                <ion-col size="6" class="ion-text-right">
+                    <ion-text>
+                        {{extratoMesAbierto?.cabecera.integrado.toString()| formatoSeparadorMiles}}
+                    </ion-text>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+    <app-mes-detalle [detalle]="detalle"></app-mes-detalle>
+</ion-content>

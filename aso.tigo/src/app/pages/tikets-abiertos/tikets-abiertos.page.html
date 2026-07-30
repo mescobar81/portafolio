@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border" translucent>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás" defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis tickets abiertos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid *ngFor="let t of tickets; let indiceTicket= index">
+    <div class="cabecera">
+      <ion-row>
+        <ion-col class="ion-text-left" size="10">Asunto: {{t.cabecera.asunto}}</ion-col>
+        <ion-col class="ion-text-right" size="2">#{{t.cabecera.nroticket}}</ion-col>
+      </ion-row>
+    </div>
+    <div class="detalle-ticket" *ngFor="let d of t.detalle; let indiceDetalle=index">
+      <ion-row>
+        <ion-col size="6">Fecha:{{d.fecha}}</ion-col>
+        <ion-col size="6">Enviado por: {{d.usuario_responde}}</ion-col>
+        <ion-col size="12">{{d.comentario}}</ion-col>
+        <ion-col size="12">Adjunto:</ion-col>
+        <ion-col size="10">{{d.adjunto | extraerCadena}}</ion-col>
+
+        <ion-col class="ion-text-right" size="2">
+          <!-- <div class="btn-seleccionar">
+            <label for="archivo"><ion-icon size="large" name="document-attach" color="tertiary"></ion-icon></label>
+            <input type="file" id="archivo">
+          </div> -->
+          <ion-icon size="large" name="document-attach" (click)="descargarArchivo(d.url, d.adjunto)" color="tertiary"></ion-icon>
+        </ion-col>
+
+      </ion-row>
+      <div class="container-buttons">
+        <ion-button color="success" (click)="responder(indiceTicket, indiceDetalle)" [class]="d.usuario_responde.toLowerCase() === 'operador' ? !(d.leido.toLowerCase() === 'n') ? 'ion-hide':'':'ion-hide'">
+          Responder
+        </ion-button>
+        <!-- <ion-button color="success" (click)="responder(indiceTicket, indiceDetalle)">
+          Responder
+        </ion-button> -->
+        <ion-button color="warning" (click)="cerrarTicket(indiceTicket, indiceDetalle)" [class]="d.usuario_responde.toLowerCase() === 'operador' ?  !(d.leido.toLowerCase() === 'n') ? 'ion-hide':'':'ion-hide'">
+          Cerrar ticket
+        </ion-button>
+      </div>
+    </div>
+  </ion-grid>
+
+</ion-content>
+

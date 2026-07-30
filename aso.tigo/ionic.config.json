@@ -1,0 +1,7 @@
+{
+  "name": "AsoTigo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

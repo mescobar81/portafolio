@@ -1,0 +1,89 @@
+{
+    "rol": "tesorero",
+    "menus": [
+        {
+            "title": "Extracto mes abierto",
+            "icon": "create",
+            "ruta": "mes-abierto",
+            "activo":true
+        },
+        {
+            "title": "Extracto mes cerrado",
+            "icon": "calendar",
+            "ruta": "mes-cerrado",
+            "activo":true
+        },
+        {
+            "title": "Movimiento BR",
+            "icon": "custom-gasoline",
+            "ruta": "movimiento-br",
+            "activo":true
+        },
+        {
+            "title": "Solicitud de órdenes",
+            "icon": "cart",
+            "ruta": "solicitud-orden",
+            "activo":true
+        },
+        {
+            "title": "Mis Órdenes pendientes",
+            "icon": "document-text",
+            "ruta": "ordenes-pendientes",
+            "activo":true
+        },
+        {
+            "title": "Solicitud de préstamo",
+            "icon": "cart",
+            "ruta": "solicitud-prestamo",
+            "activo":false
+        },
+        {
+            "title": "Mis órdenes rechazadas",
+            "icon": "document-lock",
+            "ruta": "orden-rechazada",
+            "activo":true
+        },
+        {
+            "title": "Crear Tickets",
+            "icon": "bookmark",
+            "ruta": "crea-ticket",
+            "activo":true
+        },
+        {
+            "title": "Mis tickets abiertos",
+            "icon": "bookmarks",
+            "ruta": "tikets-abiertos",
+            "activo":true
+        },
+        {
+            "title":"Otras opciones",
+            "ruta":"",
+            "icon":"",
+            "activo":true,
+            "open":false,
+            "submenus":[
+                {
+                    "title": "Órdenes Pendientes",
+                    "icon": "cart",
+                    "ruta": "aprobar-rechazar-orden",
+                    "activo":true
+                },
+                {
+                    "title": "Cobertura Médica",
+                    "icon": "bag-add",
+                    "ruta": "menu-cobertura",
+                    "activo":true
+                }
+            ]
+        },
+        {
+            "title":"Notificaciones",
+            "ruta":"",
+            "icon":"",
+            "activo":true,
+            "open":false,
+            "submenus":[
+            ]
+        }
+    ]
+}

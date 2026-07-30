@@ -1,0 +1,97 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Poppins:wght@100;300&family=Raleway:ital,wght@0,100;0,200;0,500;0,600;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.alert-message {
+    color: var(--ion-color-primary)!important;
+}
+
+.ion-popover{
+    --width: 250px;
+}
+
+.custom-toast{
+    --background:linear-gradient(to left, #001F5F,#00C0FF) !important;
+    --color:#ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+.toast-menu-cobertura{
+    --background: #00C0FF !important;
+    --color:#001F5F;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.list{
+    border: 2px solid #001F5F;
+    width:96%;
+    margin: 0 auto;
+}
+.list__item{
+    font-size: 10px;
+}
+
+.list__item__checked{
+    width: 18px;
+    height: 18px;
+}
+
+/* .sc-ion-select-popover-ios{
+    white-space: normal !important;
+}
+
+.sc-ion-select-popover-md{
+    white-space: normal !important; 
+} */
+
+.alert-radio-label.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-ios{
+    white-space: normal !important;
+}
+
+.alert-tappable.alert-radio{
+    height: auto;
+    contain: content;
+}
+
+.alert-checkbox-label.sc-ion-alert-md,
+.alert-checkbox-label.sc-ion-alert-ios{
+    white-space: normal !important;
+}
+
+.alert-tappable.alert-checkbox{
+    height: auto;
+    contain: content;
+}
+ion-loading.custom-loading {
+    --background: #e3edff;
+    --spinner-color: #1c6dff;
+  
+    color: #1c6dff;
+  }

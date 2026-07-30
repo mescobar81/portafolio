@@ -1,0 +1,171 @@
+<ion-header class="ion-no-border" translucent>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás" defaultHref="/inicio/menu-cobertura"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="container-cabecera">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-center" size="12">
+        Cobertura Médica
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="ion-text-center" size="12">
+        Grupo Telecel - ASOTIGO
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+<ion-content class="ion-padding">
+  
+
+  <ion-item>
+    <ion-label>Posee Beneficio:</ion-label>
+    <ion-title>{{validaInscripcion.beneficio}}</ion-title>
+  </ion-item>
+  
+  <form #fCotizar="ngForm" (ngSubmit)="enviarCotizacion(fCotizar)">
+  <ion-item-group>
+
+    <ion-label class="ion-text-wrap">{{etiquetaPlanFamiliar}}</ion-label>
+    <ion-item>
+      <ion-select #planFamiliar
+                  label="Seleccionar Plan:"
+                  (ionChange)="seleccionarPlan()"
+                  required>
+        <ion-select-option  *ngFor="let p of planes"
+                           [value]="p">{{p.descPlan}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item-divider color="success">
+      <div>
+        <ion-label class="ion-text-wrap">{{etiquetaGrupoFamiliar}}</ion-label>
+        <ion-label class="ion-text-end" style="font-size:20px;font-weight: 600;">{{montoGrupoFamiliar}}</ion-label>
+        <!-- <ion-label class="ion-text-end" style="font-size:20px;font-weight: 600;">{{montoGrupoFamiliar | currency:'':'':'1.0-2'}}</ion-label> -->
+      </div>
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-select #grupoFamiliar
+                  label="Seleccionar grupo familiar:"
+                  (ionChange)="SeleccionarGrupoFamiliar()"
+                  name="grupoFamilia"
+                  [(ngModel)]="grupoFamilia"
+                  required>
+        <ion-select-option *ngFor="let gf of gruposFamilia" 
+                           [value]="gf">{{gf.DescripSevi}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-label class="ion-text-wrap">{{etiquetaBeneficiarioAdherente}}</ion-label>
+    <ion-item>
+      <ion-select #beneficiarioAdherente
+                  label="Agregar beneficiarios/adherentes:"
+                  [multiple]="true"
+                  (ionChange)="seleccionarBeneficiarioAdherente($event)"
+                  name="adherente"
+                  [(ngModel)]="adherente">
+        <ion-select-option *ngFor="let b of adherenteBeneficiarios"
+                            [value]="b">{{b.DescripSevi}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-item-group>
+
+    <ion-grid>
+      <ion-row class="contentgrid--cell">
+        <ion-col class="ion-text-center" size="6">Adherente</ion-col>
+        <ion-col class="ion-text-center" size="6">Monto</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngIf="adherentes.length > 0">
+    <ion-row *ngFor="let a of adherentes; let i=index;">
+      <ion-col size="5">
+        {{a.descripServi}}
+        <div class="flex">
+          <div>
+            <ion-button color="medium" (click)="decrementarValor(i)">
+              -
+            </ion-button>
+          </div>
+          <div class="flex__cantidad">
+            <ion-input type="text" id="{{i}}" value="1"></ion-input>
+          </div>
+          <div>
+            <ion-button color="medium" (click)="incrementarValor(i)">
+              +
+            </ion-button>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="5" class="ion-text-right">
+       {{a.montoConSeparadorMiles}}
+       <!-- {{a.monto | currency:'PYG':'symbol-narrow':'1.2-2'}} -->
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Total:</ion-label>
+          </ion-item-divider>
+        </ion-item-group>
+      </ion-col>
+      <ion-col size="8">
+        <ion-item-group>
+            <ion-item-divider color="success">
+              <div class="item-divider__importeTotal">
+                <ion-label style="font-size:20px;font-weight:600">{{importeTotalConSeparadorMiles}}</ion-label>
+                <!-- <ion-label style="font-size:20px;font-weight:600">{{importeTotal | currency:'':'':'1.0-2'}}</ion-label> -->
+              </div>
+            </ion-item-divider>
+        </ion-item-group>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">{{formaPago?.formaPagoDesc}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+
+          <ion-select name="formaPago"
+                      label="Selec. Forma de Pago:"
+                      [(ngModel)]="formaPago"
+                      required>
+            <ion-select-option *ngFor="let fp of formasPago" 
+                                [value]="fp">{{fp.formaPagoDesc}}
+
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button
+                    class="btn__cotizar"
+                    type="submit"
+                    expand="block">
+          Cotizar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</form>
+</ion-content>
