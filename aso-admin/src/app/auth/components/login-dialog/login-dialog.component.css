@@ -1,0 +1,14 @@
+.title{
+    color: #023d8a;
+}
+.dialog{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-group{
+    display: flex;
+    justify-content:space-between;
+    width: 70%;
+    margin: 0 auto;
+}

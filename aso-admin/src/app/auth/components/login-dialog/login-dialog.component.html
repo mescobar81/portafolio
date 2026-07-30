@@ -1,0 +1,40 @@
+<h1 class="title" mat-dialog-title>Actualización de datos personales</h1>
+<form #myForm="ngForm">
+    <div class="dialog" mat-dialog-content>
+
+        <mat-form-field>
+            <mat-label>Correo Electrónico:</mat-label>
+            <input matInput
+                    name="correo" 
+                    type="email"
+                    [(ngModel)]="data.correo"
+                    required
+            >
+            <mat-error *ngIf="myForm.controls['correo']?.hasError('required')">Correo es requerido</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <mat-label>Número de Teléfono:</mat-label>
+            <span matPrefix>+595 &nbsp;</span>
+            <input matInput
+                   name="celular"
+                   type="tel"
+                   [(ngModel)]="data.celular"
+                    placeholder="(111) 111-111"
+                    required
+            >
+            <mat-icon matSuffix>edit</mat-icon>
+            <mat-error *ngIf="myForm.controls['celular']?.hasError('required')">Celular es requerido</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="btn-group">
+        <button mat-button 
+                color="primary"
+                [mat-dialog-close]="data"
+                [disabled]="myForm.invalid"
+        >Enviar</button>
+        <button mat-button color="warn" 
+                (click)="cerrar()"
+        >Cerrar</button>
+    </div>
+</form>

@@ -1,0 +1,96 @@
+.fondo{
+    background-image: url('../../../../assets/fondo.png');
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.login{
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 80px;
+
+}
+
+.login__avatar{
+    background-image: url('../../../../assets/ic_account_white_48dp.png'), linear-gradient(#03045e, #239cf8);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
+    background-color: #03045e;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    border: 3px solid #0095c7;
+
+}
+.login__cabecera{
+    display: flex;
+    background-image: linear-gradient(#03045e, #0979cfbc);
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+/* .login__medio{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 25px;
+    border-radius: 10px;
+} */
+
+.login__medio{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 25px;
+    border: 2px solid #023d8af0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px #023d8abe;
+}
+
+
+@media (max-width: 575px) {
+    .login{
+        width: 350px;
+        margin: 0 auto;
+        margin-top: 80px;
+    }
+
+    .fondo{
+        background-image: url('../../../../assets/fondo.png');
+        width: 350px;
+        height: 200px;
+        margin: 0 auto;
+        margin-top: 15px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+@media (max-width: 375px) {
+    .login{
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 80px;
+    }
+
+    .fondo{
+        background-image: url('../../../../assets/fondo.png');
+        width: 300px;
+        height: 200px;
+        margin: 0 auto;
+        margin-top: 15px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+

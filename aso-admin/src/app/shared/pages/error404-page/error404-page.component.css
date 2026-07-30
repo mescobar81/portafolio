@@ -1,0 +1,136 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.container__titles{
+    font-size:50px;
+    color: #1a227eb0;
+}
+.container__titles--active{
+    font-size: 40px;
+}
+.container__img{
+    width: 380px;
+}
+
+.container__link{
+    text-decoration: none;
+    color:#1a227e;
+    font-weight: 500;
+    display: block;
+    margin-top: 40px;
+    font-size:20px;
+}
+
+.container__link:hover{
+    background-color:#1a227edf;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+@media (max-width: 320px) {
+
+    .container__img{
+        width: 200px;
+    }
+
+    .container__titles{
+        text-align: center;
+        font-size:30px;
+        color: #1a227eb0;
+    }
+
+    .container__link{
+        text-align: center;
+        text-decoration: none;
+        color:#1a227e;
+        font-weight: 500;
+        display: block;
+        margin-top: 40px;
+        font-size:12px;
+    }
+
+    .container__link:hover{
+        background-color:#1a227edf;
+        color: white;
+        padding: 5px 50px;
+        border-radius: 6px;
+        font-size: 11px;
+    }
+  }
+  
+  @media(max-width: 350px) {
+  
+    .container__img{
+        width: 260px;
+    }
+    .container__titles{
+        text-align: center;
+        font-size:30px;
+        color: #1a227eb0;
+    }
+
+    .container__link{
+        text-align: center;
+        text-decoration: none;
+        color:#1a227e;
+        font-weight: 500;
+        display: block;
+        margin-top: 40px;
+        font-size:12px;
+    }
+    
+    .container__link:hover{
+        background-color:#1a227edf;
+        color: white;
+        padding: 5px 50px;
+        border-radius: 6px;
+        font-size: 11px;
+    }
+   
+  }
+  
+  @media(max-width: 575px) {
+  
+    .container__img{
+        width: 300px;
+    }
+    .container__titles{
+        text-align: center;
+        font-size:40px;
+        color: #1a227eb0;
+    }
+
+    .container__link{
+        text-align: center;
+        text-decoration: none;
+        color:#1a227e;
+        font-weight: 500;
+        display: block;
+        margin-top: 40px;
+        font-size:18px;
+    }
+    .container__link:hover{
+        background-color:#1a227edf;
+        color: white;
+        padding: 5px 50px;
+        border-radius: 6px;
+        font-size: 15px;
+    }
+    
+  }
+  
+  @media (max-width: 767px) {
+   
+  }
+  
+  @media (max-width: 991px) {
+   
+  }
+  
+  @media (max-width: 1199px) {}

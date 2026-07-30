@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Poppins:wght@100;200;300;400;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&family=Roboto:wght@100;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins';
+
+    /* background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%); */
+    background-repeat: no-repeat;
+    /* background-color: #023d8a79; */
+    font-weight: 400;
+    /*
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 200px;
+    background-size: 800px; */
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+
+@media (max-width: 575px) {
+    
+    body {
+        /*background-image: url('./assets/fondo.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-position-y: 300px;
+        background-size: 400px; */
+    }
+
+}
+
+@media (max-width: 767px) {}
+
+@media (max-width: 991px) {}
+
+@media (max-width: 1199px) {}

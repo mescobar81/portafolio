@@ -1,0 +1,43 @@
+<mat-progress-spinner 
+              class="spinner" 
+              *ngIf="showSpinner" 
+              [diameter]="100" 
+              mode="indeterminate"
+            >
+</mat-progress-spinner>
+
+<div *ngIf="!showSpinner" class="table">
+  <div class="titulo">Tarjeta Catastrada</div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th class="table__titulo" mat-header-cell *matHeaderCellDef>Marca</th>
+      <td mat-cell *matCellDef="let element">{{element.card_brand}}</td>
+    </ng-container>
+
+
+    <!-- <ng-container matColumnDef="accion">
+      <th class="table__titulo" mat-header-cell *matHeaderCellDef>Acción</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-mini-fab color="warn" [disabled]="!dataSource.length"
+          (click)="eliminarTarjeta(element.alias_token)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <button #agregar 
+          class="button__agregartarjeta" 
+          mat-raised-button color="primary" 
+          (click)="agregarTarjeta()"
+          [disabled]="dataSource.length > 0">Agregar
+          
+    Tarjeta</button>
+  <div class="btn__container">
+    <button mat-raised-button class="btn__container__volver" routerLink="/menu">Volver</button>
+  </div>
+</div>
