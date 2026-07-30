@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "productsrvc"
+		},
+		{
+			"path": "ordersrvc"
+		},
+		{
+			"name": "eureka-server",
+			"path": "eureka-server"
+		},
+		{
+			"name": "api-gateway",
+			"path": "api-gateway"
+		},
+		{
+			"name": "notification-service",
+			"path": "notification-service"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
