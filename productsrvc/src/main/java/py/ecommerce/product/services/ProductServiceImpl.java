@@ -72,9 +72,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional // Es crucial para asegurar que si algo falla, no se actualice a medias
     public StockResponseUpdateDto deductStock(List<StockRequest> stockRequest) {
+
         // 1. Convertir la lista a un Mapa indexado por ID. ¡Esto cambia el juego!
         // Ahora buscar un DTO por ID toma microsegundos.
-        Map<Long, StockRequest> dtoMap = stockRequest.stream().collect(Collectors.toMap(p -> p.getId(), dto -> dto));
+        Map<Long, StockRequest> dtoMap = stockRequest.stream().collect(Collectors.toMap(p -> p.getProductId(), dto -> dto));
 
         // 2. Traer todos los productos en UNA sola consulta SQL
         List<Product> productsFromDb = (List<Product>) repository.findAllById(dtoMap.keySet());
@@ -87,14 +88,14 @@ public class ProductServiceImpl implements ProductService {
             }
             if (matchingDto.getStock() > p.getStock()) {
                 throw new InsufficientStockHandler("failure",
-                        "Stock insuficiente para el ID: " + matchingDto.getId());
+                        "Stock insuficiente para el ID: " + matchingDto.getProductId());
             }
 
             p.deductStock(matchingDto.getStock());
         }
 
         if(productsFromDb.isEmpty()){
-            throw new ResponseNotFoundException("Productos no encontrado en la lista enviada: " + productsFromDb.size());
+            throw new ResponseNotFoundException( productsFromDb.size() + " Productos encontrado/s");
         }
         // 4. Guardar todos los productos con el stock actualizado en lote
         List<Product> updatedStocksList = (List<Product>) repository.saveAll(productsFromDb);
@@ -110,7 +111,7 @@ public class ProductServiceImpl implements ProductService {
         // 1. Convertir la lista a un Mapa indexado por ID. ¡Esto cambia el juego!
         // Ahora buscar un DTO por ID toma microsegundos.
         Map<Long, StockRequest> dtoMap = productDtos.stream()
-                .collect(Collectors.toMap(StockRequest::getId, dto -> dto));
+                .collect(Collectors.toMap(StockRequest::getProductId, dto -> dto));
         // 2. Traer todos los productos en UNA sola consulta SQL
         List<Product> productsFromDb = (List<Product>) repository.findAllById(dtoMap.keySet());
         // 3. Modificar el stock de forma lineal (Complejidad O(N))

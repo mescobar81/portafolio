@@ -18,6 +18,12 @@ spring:
                 - Path=/api/order-service/**
               filters:
                 - StripPrefix=2
+            - id: paymentsrvc
+              uri: lb://paymentsrvc
+              predicates:
+                - Path=/api/payment-service/**
+              filters:
+                - StripPrefix=2
 server:
   port: 8080
 eureka:

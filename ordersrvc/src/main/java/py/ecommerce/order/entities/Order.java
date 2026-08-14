@@ -1,16 +1,20 @@
 package py.ecommerce.order.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import py.ecommerce.order.enums.OrderStatus;
 
 @Entity
 @Table(name = "orders")
@@ -21,18 +25,19 @@ public class Order {
     private Long id;
     @Column(nullable = false)
     private LocalDate date;
-    @OneToMany(cascade = CascadeType.PERSIST)
-    private List<OrderDetail> orders;
-    private Double total;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "order", orphanRemoval = true)
+    private List<OrderDetail> details;
+    private BigDecimal amount;
+    @Enumerated(EnumType.STRING)
     @Column(name = "status_order")
-    private String statusOrder;
+    private OrderStatus statusOrder;
 
     public Order() {
     }
 
-    public Order(LocalDate date, Double total, String statusOrder) {
+    public Order(LocalDate date, BigDecimal amount, OrderStatus statusOrder) {
         this.date = date;
-        this.total = total;
+        this.amount = amount;
         this.statusOrder = statusOrder;
     }
 
@@ -52,34 +57,34 @@ public class Order {
         this.date = date;
     }
 
-    public Double getTotal() {
-        return total;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setAmount(BigDecimal total) {
+        this.amount = total;
     }
 
     public void addOrder(OrderDetail orderDetail) {
-        if (orders == null) {
-            orders = new ArrayList<>();
+        if (details == null) {
+            details = new ArrayList<>();
         }
-        orders.add(orderDetail);
+        details.add(orderDetail);
     }
 
-    public List<OrderDetail> getOrders() {
-        return orders;
+    public List<OrderDetail> getDetails() {
+        return details;
     }
 
-    public void setOrders(List<OrderDetail> orders) {
-        this.orders = orders;
+    public void setDetails(List<OrderDetail> orders) {
+        this.details = orders;
     }
 
-    public String getStatusOrder() {
+    public OrderStatus getStatusOrder() {
         return statusOrder;
     }
 
-    public void setStatusOrder(String statusOrder) {
+    public void setStatusOrder(OrderStatus statusOrder) {
         this.statusOrder = statusOrder;
     }
 }

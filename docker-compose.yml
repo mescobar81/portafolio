@@ -1,12 +1,27 @@
 services:
-  mysql-db:
+  order-db:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: order-db
     environment:
       MYSQL_DATABASE: order_db
       MYSQL_ROOT_PASSWORD: Prometeo$$4
     ports:
       - "3306:3306"
+    networks:
+      - microservices-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  payment-db:
+    image: mysql:8.0
+    container_name: payment-db
+    environment:
+      MYSQL_DATABASE: payment_db
+      MYSQL_ROOT_PASSWORD: Prometeo$$4
+    ports:
+      - "3307:3306"
     networks:
       - microservices-net
     healthcheck:
@@ -100,11 +115,11 @@ services:
     ports:
       - "8082:8082"
     environment:
-      DB_URL: jdbc:mysql://mysql-db:3306/order_db
+      DB_URL: jdbc:mysql://order-db:3306/order_db
       DB_USER: root
       DB_PASSWORD: Prometeo$$4
     depends_on:
-      mysql-db:
+      order-db:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
@@ -130,6 +145,29 @@ services:
         condition: service_healthy
       order-service:
         condition: service_started
+    networks:
+      - microservices-net
+  # ---------------------------------------------------------------------------
+  # PAYMENT SERVICE (Servicio de pago sincrona)
+  # ---------------------------------------------------------------------------
+  payment-service:
+    build:
+      context: ./paymentsrvc # Ruta al código fuente del Notification Service
+      dockerfile: Dockerfile
+    container_name: payment-service
+    ports:
+      - "8084:8084"
+    environment:
+      DB_URL: jdbc:mysql://payment-db:3306/payment_db
+      DB_USER: root
+      DB_PASSWORD: Prometeo$$4
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+      payment-db:
+        condition: service_healthy
     networks:
       - microservices-net
   # ---------------------------------------------------------------------------

@@ -3,14 +3,14 @@ package py.ecommerce.order.dto;
 public class OrderDetailDto {
 
     private Long id;
-    private Long productId;
+    private ProductDto productDto;
     private Long quantity;
 
     public OrderDetailDto() {}
 
-    public OrderDetailDto(Long id, Long productId, Long quantity) {
+    public OrderDetailDto(Long id, ProductDto productDto, Long quantity) {
         this.id = id;
-        this.productId = productId;
+        this.productDto = productDto;
         this.quantity = quantity;
     }
     public Long getId() {
@@ -19,11 +19,11 @@ public class OrderDetailDto {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getProductId() {
-        return productId;
+    public ProductDto getProductDto() {
+        return productDto;
     }
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProductDto(ProductDto product) {
+        this.productDto = product;
     }
 
     public Long getQuantity() {

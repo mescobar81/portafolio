@@ -7,5 +7,5 @@ import py.ecommerce.order.dto.OrderDto;
 public interface OrderService extends CrudService<OrderDto>{
     
     List<InventoryResponseDto> findBySkuCodeIn(List<String> code);
-    OrderDto updateStatusOrderById(Long id);
+    OrderDto updateStatusOrder(OrderDto orderDto);
 }

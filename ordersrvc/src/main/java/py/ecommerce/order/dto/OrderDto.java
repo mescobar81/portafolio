@@ -1,5 +1,6 @@
 package py.ecommerce.order.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -7,17 +8,17 @@ public class OrderDto {
 
     private Long id;
     private LocalDate date;
-    private List<OrderDetailDto> orders;
-    private Double total;
+    private List<OrderDetailDto> details;
+    private BigDecimal amount;
     private String statusOrder;
     public OrderDto() {}
 
     
-    public OrderDto(Long id, LocalDate date, Double total, List<OrderDetailDto> orders, String statusOrder) {
+    public OrderDto(Long id, LocalDate date, BigDecimal amount, List<OrderDetailDto> details, String statusOrder) {
         this.id = id;
         this.date = date;
-        this.total = total;
-        this.orders = orders;
+        this.amount = amount;
+        this.details = details;
         this.statusOrder = statusOrder;
     }
 
@@ -33,24 +34,23 @@ public class OrderDto {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    public List<OrderDetailDto> getOrders() {
-        return orders;
+    public List<OrderDetailDto> getDetails() {
+        return details;
     }
-    public void setOrders(List<OrderDetailDto> orders) {
-        this.orders = orders;
+    public void setDetails(List<OrderDetailDto> orders) {
+        this.details = orders;
     }
-    public Double getTotal() {
-        return total;
+    public BigDecimal getAmount() {
+        return amount;
     }
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setTotal(BigDecimal total) {
+        this.amount = total;
     }
 
 
     public String getStatusOrder() {
         return statusOrder;
     }
-
 
     public void setStatusOrder(String statusOrder) {
         this.statusOrder = statusOrder;

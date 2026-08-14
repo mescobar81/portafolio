@@ -32,6 +32,8 @@ public class RabbitMQConfig {
 
     @Bean
     public JacksonJsonMessageConverter messageConverter(){
-        return new JacksonJsonMessageConverter();
+        JacksonJsonMessageConverter converter = new JacksonJsonMessageConverter();
+        converter.setAlwaysConvertToInferredType(true);// evita converter.MessageConversionException: Cannot convert
+        return converter;
     }
 }

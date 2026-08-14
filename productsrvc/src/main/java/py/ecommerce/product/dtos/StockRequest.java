@@ -2,15 +2,15 @@ package py.ecommerce.product.dtos;
 
 public class StockRequest {
 
-    private Long id;
+    private Long productId;
     private Long stock;
     public StockRequest() {}
     
-    public Long getId() {
-        return id;
+    public Long getProductId() {
+        return productId;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
     public Long getStock() {
         return stock;

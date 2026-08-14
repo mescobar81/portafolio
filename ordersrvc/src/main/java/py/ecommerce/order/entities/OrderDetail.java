@@ -1,28 +1,32 @@
 package py.ecommerce.order.entities;
 
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "orders_detail")
+@Table(name = "order_detail")
 public class OrderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "product_id")
     private Long productId;
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
     private Long quantity;
     public OrderDetail() {}
 
     
-    public OrderDetail(Long productId, Long quantity) {
+    public OrderDetail(Long productId, Order order, Long quantity) {
         this.productId = productId;
+        this.order = order;
         this.quantity = quantity;
     }
 
@@ -35,7 +39,7 @@ public class OrderDetail {
     public Long getProductId() {
         return productId;
     }
-    public void setProductId(Long productId) {
+    public void setProduct(Long productId) {
         this.productId = productId;
     }
 
@@ -47,5 +51,15 @@ public class OrderDetail {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
+    }
+
+
+    public Order getOrder() {
+        return order;
+    }
+
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
